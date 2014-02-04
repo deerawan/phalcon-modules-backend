@@ -22,7 +22,17 @@ $di['router'] = function () {
     $router = new Router();
 
     $router->setDefaultModule("frontend");
-    $router->setDefaultNamespace("Ezypickup\Frontend\Controllers");
+    //$router->setDefaultNamespace("Ezypickup\Frontend\Controllers");
+
+    /**
+     * Backend routes
+     */
+
+    $router->add('/admin', array(
+        'module' => 'backend',
+        'controller' => 'index',
+        'action' => 'index'        
+    ));
 
     return $router;
 };

@@ -1,6 +1,6 @@
 <?php
 
-namespace Ezypickup\Frontend;
+namespace Ezypickup\Backend;
 
 use Phalcon\Loader;
 use Phalcon\Mvc\View;
@@ -20,8 +20,8 @@ class Module implements ModuleDefinitionInterface
         $loader = new Loader();
 
         $loader->registerNamespaces(array(
-            'Ezypickup\Frontend\Controllers' => __DIR__ . '/controllers/',
-            'Ezypickup\Frontend\Models' => __DIR__ . '/models/',
+            'Ezypickup\Backend\Controllers' => __DIR__ . '/controllers/',
+            'Ezypickup\Backend\Models' => __DIR__ . '/models/',
         ));
 
         $loader->register();
@@ -39,12 +39,12 @@ class Module implements ModuleDefinitionInterface
          * Read configuration
          */
         $config = include __DIR__ . "/config/config.php";
-		
-		$di->set('dispatcher', function() {
-			$dispatcher = new Dispatcher();
-			$dispatcher->setDefaultNamespace("Ezypickup\Frontend\Controllers");
-			return $dispatcher;
-		});
+
+        $di->set('dispatcher', function() {
+            $dispatcher = new Dispatcher();
+            $dispatcher->setDefaultNamespace("Ezypickup\Backend\Controllers");
+            return $dispatcher;
+        });
 
         /**
          * Setting up the view component
